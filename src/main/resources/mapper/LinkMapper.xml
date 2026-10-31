@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.njust.shortlink.mapper.LinkMapper">
+    <insert id="insert" parameterType="com.njust.shortlink.pojo.ShortLink"
+            useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO short_link (short_code, original_url, enabled, expires_at)
+        VALUES (#{shortCode}, #{originalUrl}, #{enabled}, #{expiresAt})
+    </insert>
+
+    <select id="selectByShortCode" resultType="com.njust.shortlink.pojo.ShortLink">
+        SELECT id, short_code, original_url, enabled, expires_at
+        FROM short_link
+        WHERE short_code = #{shortCode}
+    </select>
+
+</mapper>

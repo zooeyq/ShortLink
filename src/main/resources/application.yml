@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: ShortLink
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/shortLink
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: ${DB_PASSWORD}
+
+  sql:
+    init:
+      mode: never
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    # ① 日志输出
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # ② 下划线自动转驼峰
+    map-underscore-to-camel-case: true
+
+
+logging:
+  level:
+    org.springframework.jdbc.support.JdbcTransactionManager: debug
